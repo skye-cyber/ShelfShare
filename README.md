@@ -5,9 +5,9 @@ A simple Ruby on Rails application to manage a book lending library.
 ## Setup
 
 1. **Clone the repository:**
-   ```bash
-   git clone <your-repo-url>
-   cd book_lending_library
+```bash
+git clone https://github.com/skye-cyber/ShelfShare.git
+cd ShelfShare
 ```
 2. **Install dependencies:**
 
@@ -20,13 +20,13 @@ bundle install
 rails db:create
 rails db:migrate
 ```
-Run the application:
+4. Run the application:
 
 ```bash
-
 rails server
 ```
-4. **Open your web browser and visit http://localhost:3000 to see the application.**
+
+5. **Open your web browser and visit http://localhost:3000 to see the application.**
 
 ## Usage
 
