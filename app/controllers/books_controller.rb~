@@ -1,33 +1,47 @@
-class LoansController < ApplicationController
-    def new_loan
-        @book = Book.find(params[:book_id])
-        @loan = @book.loans.new
-    end
+class BooksController < ApplicationController
+  def index
+    @books = Book.all
+  end
 
-    def create
-        @book = Book.find(params[:book_id])
-        @loan = @book.loans.new(loan_params)
-        @loan.borrowed_on = Time.current
-        if @loan.save
-            redirect_to book_path(@book), notice: "Book borrowed successfully."
-        else
-            render :new_loan
-        end
-    end
+  def show
+    @book = Book.find(params[:id])
+  end
 
-    def return
-        @loan = Loan.find(params[:id])
-        @loan.returned_on = Time.current
-        if @loan.save
-            redirect_to book_path(@loan.book), notice: "Book returned successfully."
-        else
-            render :edit
-        end
-    end
+  def new
+    @book = Book.new
+  end
 
-    private
-
-    def loan_params
-        params.require(:loan).permit(:borrower_name)
+  def create
+    @book = Book.new(book_params)
+    if @book.save
+      redirect_to books_path
+    else
+      render :new
     end
+  end
+
+  def edit
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+      redirect_to book_path(@book)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to books_path
+  end
+
+  private
+
+  def book_params
+    params.require(:book).permit(:title, :author, :description)
+  end
 end

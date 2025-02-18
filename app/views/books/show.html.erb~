@@ -1,36 +1,46 @@
-<h1><%= @book.title %></h1>
-<p style="font-weight: bold;">Author:</p>
-<p><%= @book.author %></p>
-<p style="font-weight: bold;">Description:</p>
-<p><%= @book.description %></p>
+<div class="mt-10 max-w-[85vw] mx-auto p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg animation-fade-in">
+  <h1 class="text-3xl font-bold text-pink-600 dark:text-pink-400 mb-4">Title:&nbsp<span class="text-pink-400"><%= @book.title %></span></h1>
+  <p class="font-bold text-purple-700 dark:text-purple-300">Author:&nbsp
+  <span class="text-gray-900 dark:text-gray-100"><%= @book.author %></span></p>
+  <p class="font-bold text-purple-700 dark:text-purple-300">Description:&nbsp
+  <span class="text-gray-900 dark:text-gray-100"><%= @book.description %></span></p>
 
-<h2>Borrowing History</h2>
-<table style="border: 1px solid black; margin-top: 20px; width: 100%;">
-  <thead>
-    <tr style="background-color: #f2f2f2;">
-      <th style="text-align: left; padding: 10px;">Borrower Name</th>
-      <th style="text-align: left; padding: 10px;">Borrowed On</th>
-      <th style="text-align: left; padding: 10px;">Returned On</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @book.loans.each do |loan| %>
+  <h2 class="text-2xl font-bold text-teal-600 dark:text-teal-400 mt-8">Borrowing History</h2>
+  <table class="w-full mt-4 border-collapse shadow-md">
+    <thead class="bg-gradient-to-r from-blue-500 to-cyan-500 text-white dark:text-gray-100">
       <tr>
-        <td style="padding: 10px;"><%= loan.borrower_name %></td>
-        <td style="padding: 10px;"><%= loan.borrowed_on %></td>
-        <td style="padding: 10px;">
-          <% if loan.returned_on %>
-            <%= loan.returned_on %>
-          <% else %>
-            <%= link_to "Return", return_loan_path(loan), method: :patch, class: "btn btn-warning" %>
-          <% end %>
-        </td>
+        <th class="p-4 text-left">Borrower Name</th>
+        <th class="p-4 text-left">Borrowed On</th>
+        <th class="p-4 text-left">Returned On</th>
+        <th class="p-4 text-left">Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody class="bg-white dark:bg-gray-800">
+      <% @book.loans.each do |loan| %>
+        <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+          <td class="p-4"><%= loan.borrower_name %></td>
+          <td class="p-4"><%= loan.borrowed_on %></td>
+          <td class="p-4">
+            <% if loan.returned_on %>
+              <%= loan.returned_on %>
+            <% else %>
+              Not Returned
+            <% end %>
+          </td>
+          <td class="p-4">
+            <% if loan.returned_on.nil? %>
+              <%= form_with url: return_book_loan_path(@book, loan), method: :patch do %>
+                <%= submit_tag "Return", class: "px-4 py-2 bg-amber-500 text-white rounded hover:bg-amber-600 transition-colors" %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<p>
-  <%= link_to "Borrow this book", new_book_loan_path(@book), class: "btn btn-primary" %>
-  <%= link_to "Back to List", books_path %>
-</p>
+  <div class="mt-8 flex justify-between">
+    <%= link_to "Borrow this book", new_book_loan_path(@book), class: "px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors" %>
+    <%= link_to "Back to List", books_path, class: "px-4 py-2 bg-sky-500 text-white rounded hover:bg-sky-600 transition-colors" %>
+  </div>
+</div>

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :books do
-    resources :loans, only: [:new, :create, :return], path_names: { new: 'new_loan' }
+    resources :loans, only: [:new, :create, :destr] do
+      member do
+        patch :return
+      end
+    end
   end
 
   root "books#index"
