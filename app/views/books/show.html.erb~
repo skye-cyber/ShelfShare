@@ -1,5 +1,5 @@
 <div class="mt-10 max-w-[85vw] mx-auto p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg animation-fade-in">
-  <h1 class="text-3xl font-bold text-pink-600 dark:text-pink-400 mb-4">Title:&nbsp<span class="text-pink-400"><%= @book.title %></span></h1>
+  <h1 class="text-3xl font-bold text-pink-600 dark:text-pink-200 mb-4">Title:&nbsp<span class="text-pink-400"><%= @book.title %></span></h1>
   <p class="font-bold text-purple-700 dark:text-purple-300">Author:&nbsp
   <span class="text-gray-900 dark:text-gray-100"><%= @book.author %></span></p>
   <p class="font-bold text-purple-700 dark:text-purple-300">Description:&nbsp
@@ -15,11 +15,11 @@
         <th class="p-4 text-left">Actions</th>
       </tr>
     </thead>
-    <tbody class="bg-white dark:bg-gray-800">
+    <tbody class="bg-white dark:bg-stone-700">
       <% @book.loans.each do |loan| %>
-        <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-          <td class="p-4"><%= loan.borrower_name %></td>
-          <td class="p-4"><%= loan.borrowed_on %></td>
+        <tr class="hover:bg-gray-100 dark:hover:bg-neutral-800">
+          <td class="p-4 text-[#00aaff]"><%= loan.borrower_name %></td>
+          <td class="p-4 text-fuchsia-400"><%= loan.borrowed_on %></td>
           <td class="p-4">
             <% if loan.returned_on %>
               <%= loan.returned_on %>
@@ -38,7 +38,9 @@
       <% end %>
     </tbody>
   </table>
-
+    <script>
+    document.body.classList.add('bg-slate-700');
+    </script>
   <div class="mt-8 flex justify-between">
     <%= link_to "Borrow this book", new_book_loan_path(@book), class: "px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors" %>
     <%= link_to "Back to List", books_path, class: "px-4 py-2 bg-sky-500 text-white rounded hover:bg-sky-600 transition-colors" %>
