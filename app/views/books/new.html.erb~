@@ -1,4 +1,4 @@
-<div class="mt-4 max-w-4xl mx-auto p-8 bg-teal-200 rounded-lg shadow-lg">
+<div class="mt-4 max-w-4xl mx-auto p-8 bg-cyan-200 rounded-lg shadow-lg">
   <h1 class="text-3xl font-bold text-pink-600 mb-4">Add a New Book</h1>
 
   <%= form_with model: @book, local: true do |form| %>
