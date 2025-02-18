@@ -1,0 +1,18 @@
+current directory: /home/skye/ShelfShare/vendor/bundle/ruby/3.1.0/gems/racc-1.8.1/ext/racc/cparse
+/usr/bin/ruby3.1 -I/usr/lib/ruby/vendor_ruby extconf.rb
+creating Makefile
+
+current directory: /home/skye/ShelfShare/vendor/bundle/ruby/3.1.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20250218-61512-5ugose sitelibdir\=./.gem.20250218-61512-5ugose clean
+
+current directory: /home/skye/ShelfShare/vendor/bundle/ruby/3.1.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20250218-61512-5ugose sitelibdir\=./.gem.20250218-61512-5ugose
+compiling cparse.c
+linking shared-object racc/cparse.so
+
+current directory: /home/skye/ShelfShare/vendor/bundle/ruby/3.1.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20250218-61512-5ugose sitelibdir\=./.gem.20250218-61512-5ugose install
+/usr/bin/install -c -m 0755 cparse.so ./.gem.20250218-61512-5ugose/racc
+
+current directory: /home/skye/ShelfShare/vendor/bundle/ruby/3.1.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20250218-61512-5ugose sitelibdir\=./.gem.20250218-61512-5ugose clean

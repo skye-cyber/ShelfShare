@@ -1,0 +1,28 @@
+<h1>Borrow Book: <%= @book.title %></h1>
+<%= form_with model: [@book, @loan], local: true do |form| %>
+  <% if @loan.errors.any? %>
+    <div id="error_explanation" style="color: red;">
+      <h2>
+        <%= pluralize(@loan.errors.count, "error") %> prohibited this loan from being saved:
+      </h2>
+      <ul>
+        <% @loan.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="margin: 10px 0;">
+    <%= form.label :borrower_name %>
+    <%= form.text_field :borrower_name, style: "display: block; width: 100%; padding: 10px; margin-top: 5px;" %>
+  </div>
+
+  <div style="margin: 20px 0;">
+    <%= form.submit "Borrow Book", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<p>
+  <%= link_to "Back to Book Details", book_path(@book) %>
+</p>

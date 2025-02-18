@@ -1,0 +1,22 @@
+current directory: /home/skye/ShelfShare/vendor/bundle/ruby/3.1.0/gems/digest-3.2.0/ext/digest/sha2
+/usr/bin/ruby3.1 -I/usr/lib/ruby/vendor_ruby extconf.rb
+checking for CommonCrypto/CommonDigest.h... no
+checking for u_int8_t... yes
+checking for sys/cdefs.h... yes
+creating Makefile
+
+current directory: /home/skye/ShelfShare/vendor/bundle/ruby/3.1.0/gems/digest-3.2.0/ext/digest/sha2
+make DESTDIR\= sitearchdir\=./.gem.20250218-61512-fk3c2k sitelibdir\=./.gem.20250218-61512-fk3c2k clean
+
+current directory: /home/skye/ShelfShare/vendor/bundle/ruby/3.1.0/gems/digest-3.2.0/ext/digest/sha2
+make DESTDIR\= sitearchdir\=./.gem.20250218-61512-fk3c2k sitelibdir\=./.gem.20250218-61512-fk3c2k
+compiling sha2.c
+compiling sha2init.c
+linking shared-object digest/sha2.so
+
+current directory: /home/skye/ShelfShare/vendor/bundle/ruby/3.1.0/gems/digest-3.2.0/ext/digest/sha2
+make DESTDIR\= sitearchdir\=./.gem.20250218-61512-fk3c2k sitelibdir\=./.gem.20250218-61512-fk3c2k install
+/usr/bin/install -c -m 0755 sha2.so ./.gem.20250218-61512-fk3c2k/digest
+
+current directory: /home/skye/ShelfShare/vendor/bundle/ruby/3.1.0/gems/digest-3.2.0/ext/digest/sha2
+make DESTDIR\= sitearchdir\=./.gem.20250218-61512-fk3c2k sitelibdir\=./.gem.20250218-61512-fk3c2k clean

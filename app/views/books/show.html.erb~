@@ -1,0 +1,36 @@
+<h1><%= @book.title %></h1>
+<p style="font-weight: bold;">Author:</p>
+<p><%= @book.author %></p>
+<p style="font-weight: bold;">Description:</p>
+<p><%= @book.description %></p>
+
+<h2>Borrowing History</h2>
+<table style="border: 1px solid black; margin-top: 20px; width: 100%;">
+  <thead>
+    <tr style="background-color: #f2f2f2;">
+      <th style="text-align: left; padding: 10px;">Borrower Name</th>
+      <th style="text-align: left; padding: 10px;">Borrowed On</th>
+      <th style="text-align: left; padding: 10px;">Returned On</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @book.loans.each do |loan| %>
+      <tr>
+        <td style="padding: 10px;"><%= loan.borrower_name %></td>
+        <td style="padding: 10px;"><%= loan.borrowed_on %></td>
+        <td style="padding: 10px;">
+          <% if loan.returned_on %>
+            <%= loan.returned_on %>
+          <% else %>
+            <%= link_to "Return", return_loan_path(loan), method: :patch, class: "btn btn-warning" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+  <%= link_to "Borrow this book", new_book_loan_path(@book), class: "btn btn-primary" %>
+  <%= link_to "Back to List", books_path %>
+</p>
