@@ -8,7 +8,7 @@ A simple Ruby on Rails application to manage a book lending library.
    ```bash
    git clone <your-repo-url>
    cd book_lending_library
-````
+```
 2. **Install dependencies:**
 
 ```bash
