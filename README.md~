@@ -28,6 +28,7 @@ rails server
 
 5. **Open your web browser and visit http://localhost:3000 to see the application.**
 
+---
 ## Usage
 
 **List all books:**
@@ -70,7 +71,7 @@ To run the tests for the application, use the following commands:
 **Run RSpec tests:**
 
 ```bash
-rspec
+rails test
 ```
 
 ## Contribution

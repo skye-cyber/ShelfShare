@@ -68,10 +68,10 @@ From a book's details page, click on ``Return`` next to a borrowing entry to mar
 
 To run the tests for the application, use the following commands:
 
-**Run RSpec tests:**
+**Run tests:**
 
 ```bash
-rspec
+rails test
 ```
 
 ## Contribution
