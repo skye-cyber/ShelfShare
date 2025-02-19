@@ -6,6 +6,7 @@
   <span class="text-gray-900 dark:text-gray-100"><%= @book.description %></span></p>
 
   <h2 class="text-2xl font-bold text-teal-600 dark:text-teal-400 mt-8">Borrowing History</h2>
+  <% if @book.loans.any? %>
   <table class="w-full mt-4 border-collapse shadow-md">
     <thead class="bg-gradient-to-r from-blue-500 to-cyan-500 text-white dark:text-gray-100">
       <tr>
@@ -38,6 +39,10 @@
       <% end %>
     </tbody>
   </table>
+  <% else%>
+  <p class="text-orange-400"> No Borrowing History for this book</p>
+  <% end %>
+
     <script>
     document.body.classList.add('bg-slate-700');
     </script>

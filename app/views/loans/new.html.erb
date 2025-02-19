@@ -20,14 +20,16 @@
       <%= form.text_field :borrower_name, class: "w-full p-3 border border-gray-300 rounded" %>
     </div>
 
-    <div class="mt-4">
-      <%= form.submit "Borrow Book", class: "px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors" %>
-    </div>
-  <% end %>
+    <section class="flex justify-between">
+      <div class="mt-4">
+        <%= form.submit "Borrow Book", class: "px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors" %>
+      </div>
+    <% end %>
 
-  <p class="mt-6">
-    <%= link_to "Back to Book Details", book_path(@book), class: "px-4 py-2 bg-sky-500 text-white rounded hover:bg-sky-600 transition-colors" %>
-  </p>
+    <p class="mt-6">
+      <%= link_to "Back to Book Details", book_path(@book), class: "px-4 py-2 bg-sky-500 text-white rounded hover:bg-sky-600 transition-colors" %>
+    </p>
+  </section>
 </div>
     <script>
     document.body.classList.add('bg-blue-50');

@@ -28,23 +28,28 @@ rails server
 
 5. **Open your web browser and visit http://localhost:3000 to see the application.**
 
+---
 ## Usage
 
 **List all books:**
 
 Navigate to the home page (http://localhost:3000).
+![list-preview](./app/assets/images/index.png)
 
 **Add a new book:**
 
 Click on ``Add New Book`` to add a new book to the library.
+![list-preview](./app/assets/images/new-book.png)
 
 **View book details:**
 
 Click on a book title to see its details and borrowing history.
+![list-preview](./app/assets/images/show-book.png)
 
 **Edit a book:**
 
 Click on ``Edit`` next to a book to modify its details.
+![list-preview](./app/assets/images/edit-book.png)
 
 **Delete a book:**
 
@@ -54,6 +59,7 @@ Click on "Delete" next to a book to remove it from the library.
 
 From a book's details page, click on ``Borrow this Book`` to borrow it.
 Enter the borrower's name and submit the form.
+![list-preview](./app/assets/images/borrow-book.png)
 
 **Return a book:**
 
