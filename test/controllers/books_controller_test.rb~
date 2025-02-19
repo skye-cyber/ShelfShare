@@ -13,10 +13,10 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
 
   test "should create book" do
     assert_difference('Book.count') do
-      post books_path, params: { book: { title: "Sample Book", author: "Author Name", description: "Sample Description" } }
+      post books_path, params: { book: { title: "Sample Book", author: "Author-name", description: "Sample Description" } }
     end
 
-    assert_redirected_to book_path(Book.last)
+    assert_redirected_to books_path
   end
 
   test "should show book" do

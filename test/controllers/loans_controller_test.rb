@@ -1,33 +1,49 @@
-class LoansController < ApplicationController
-  def new_loan
-    @book = Book.find(params[:book_id])
-    @loan = @book.loans.new
+require "test_helper"
+
+class LoansControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @book = books(:one)
   end
 
-  def create
-    @book = Book.find(params[:book_id])
-    @loan = @book.loans.new(loan_params)
-    @loan.borrowed_on = Time.current
-    if @loan.save
-      redirect_to book_path(@book), notice: "Book borrowed successfully."
-    else
-      render :new_loan
+  test "should get new loan form" do
+    get new_book_loan_url(@book)
+    assert_response :success
+  end
+
+  test "should create loan" do
+    assert_difference('Loan.count') do
+      post book_loans_url(@book), params: { loan: { borrower_name: "Mwikya" } }
     end
+
+    assert_redirected_to book_url(@book)
+    assert_equal "Book borrowed successfully.", flash[:notice]
   end
 
-  def return
-    @loan = Loan.find(params[:id])
-    @loan.returned_on = Time.current
-    if @loan.save
-      redirect_to book_path(@loan.book), notice: "Book returned successfully."
-    else
-      render :edit
+  test "should not create loan with invalid attributes" do
+    assert_no_difference('Loan.count') do
+      post book_loans_url(@book), params: { loan: { borrower_name: "" } }
     end
+
+    assert_response :success
   end
 
-  private
+  test "should return loan" do
+    @loan = @book.loans.create(borrower_name: "Mwikya", borrowed_on: Time.current)
+    patch return_loan_url(@loan)
+    @loan.reload
 
-  def loan_params
-    params.require(:loan).permit(:borrower_name)
+    assert_equal Time.current, @loan.returned_on, "Loan was not marked as returned"
+    assert_redirected_to book_url(@book)
+    assert_equal "Book returned successfully.", flash[:notice]
+  end
+
+  test "should not return loan with invalid attributes" do
+    @loan = @book.loans.create(borrower_name: "Mwikya", borrowed_on: Time.current, returned_on: Time.current)
+    patch return_loan_url(@loan)
+    @loan.reload
+
+    assert_not_nil @loan.returned_on, "Loan should already be marked as returned"
+    assert_redirected_to book_url(@book)
+    assert_equal "Book returned successfully.", flash[:notice]
   end
 end

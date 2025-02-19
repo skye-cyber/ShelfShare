@@ -1,5 +1,5 @@
 class LoansController < ApplicationController
-  def new
+  def new_loan
     @book = Book.find(params[:book_id])
     @loan = @book.loans.new
   end
@@ -11,7 +11,7 @@ class LoansController < ApplicationController
     if @loan.save
       redirect_to book_path(@book), notice: "Book borrowed successfully."
     else
-      render :new
+      render :new_loan
     end
   end
 
