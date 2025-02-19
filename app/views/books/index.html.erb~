@@ -4,6 +4,7 @@
 </div>
 
 <div class="flex ml-[4vw] mt-10 w-md max-w-[90vw]">
+<% if @books.any? %>
   <table class="w-full text-left bg-white shadow-md rounded-lg overflow-hidden">
     <thead>
       <tr class="bg-blue-500 text-white">
@@ -22,9 +23,6 @@
           <td class="p-4">
           <section class="flex justify-between">
             <%= link_to "Edit", edit_book_path(book), class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2 transition duration-300 ease-in-out" %>
-            <!--<%= form_with url: edit_book_path(book), method: :edit, style: "display:inline-block;", data: { confirm: "Are you sure?" } do %>
-                <%= button_tag "Edit", type: "submit", class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out" %>
-            <% end %>-->
             <%= form_with url: book_path(book), method: :delete, style: "display:inline-block;", data: { confirm: "Are you sure?" } do %>
                 <%= button_tag "Delete", type: "submit", class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out" %>
             <% end %>
@@ -34,4 +32,10 @@
       <% end %>
     </tbody>
   </table>
+  <% else %>
+  <p class="flex w-full justify-center text-orange-600 text-center font-semibold">No Books Available</p>
+  <% end %>
 </div>
+    <script>
+    document.body.classList.add('bg-blue-50');
+    </script>
